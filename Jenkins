@@ -9,11 +9,9 @@ pipeline {
             }
         }
 
-        stage('Copy File to Apache') {
+        stage('Deploy to Apache') {
             steps {
-                sh '''
-                    sudo -n /usr/local/bin/deploy-apache-index
-                '''
+                sh 'sudo -n /usr/local/bin/deploy-apache-index'
             }
         }
     }
