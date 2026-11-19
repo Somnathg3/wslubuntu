@@ -1,0 +1,20 @@
+pipeline {
+    agent { label 'built-in' }
+
+    stages {
+        stage('Checkout from GitHub') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Somnathg3/wslubuntu.git'
+            }
+        }
+
+        stage('Copy File to Apache') {
+            steps {
+                sh '''
+                    sudo -n /usr/local/bin/deploy-apache-index
+                '''
+            }
+        }
+    }
+}
